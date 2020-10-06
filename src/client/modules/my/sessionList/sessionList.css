@@ -1,3 +1,4 @@
+@import '@salesforce/slds/legacy';
 :host {
     width: 100%;
     padding: 2rem;

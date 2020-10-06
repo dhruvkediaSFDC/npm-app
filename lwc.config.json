@@ -5,12 +5,9 @@
         },
         {
             "npm": "lightning-base-components"
+        },
+        {
+            "npm": "@salesforce-ux/design-system"
         }
-    ],
-
-    "stylesheetConfig": {
-        "customProperties": {
-            "allowDefinition": true
-        }
-    }
+    ]
 }

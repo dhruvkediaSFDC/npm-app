@@ -7,23 +7,28 @@
         />
 
         <template for:each={sessions} for:item="session" for:index="index">
-            <a key={session.id} class="session">
-                <div>
-                    <p class="title">{session.name}</p>
-                    <p class="icon time">{session.dateTime}</p>
-                    <p class="icon room">{session.room}</p>
-                </div>
+            <lightning-tile
+                label={session.name}
+                href=""
+                key={session.id}
+                class="session"
+            >
+                <p class="icon time">{session.dateTime}</p>
+                <p class="icon room">{session.room}</p>
+
                 <div class="speaker-pictures">
                     <template for:each={session.speakers} for:item="speaker">
-                        <img
-                            key={speaker.id}
+                        <lightning-avatar
                             src={speaker.pictureUrl}
-                            alt={speaker.name}
-                            title={speaker.name}
-                        />
+                            variant="circle"
+                            key={speaker.id}
+                            size="medium"
+                            alternative-text={speaker.name}
+                        >
+                        </lightning-avatar>
                     </template>
                 </div>
-            </a>
+            </lightning-tile>
         </template>
     </div>
 </template>

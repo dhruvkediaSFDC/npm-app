@@ -1,6 +1,3 @@
-@import '@salesforce/slds/legacy' .content {
-    padding: 0 3rem;
-}
 header {
     padding: 1rem;
     display: flex;
@@ -16,4 +13,7 @@ header img {
 header h2 {
     font-size: 1.75rem;
     font-weight: 300;
+}
+.content {
+    padding: 0 3rem;
 }

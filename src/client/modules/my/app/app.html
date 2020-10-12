@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <header>
         <img src="resources/lwc.png" alt="App logo" />
         <h2>Lightning Conference</h2>
@@ -7,4 +7,39 @@
     <main class="content">
         <my-session-list></my-session-list>
     </main>
+</template> -->
+<template>
+    <lightning-card>
+        <div
+            id="inverse"
+            class="row dark-background slds-box slds-text-heading_small"
+        >
+            <h4 slot="title">
+                <lightning-icon
+                    icon-name="utility:connected_apps"
+                    size="small"
+                    variant="inverse"
+                ></lightning-icon>
+                Lightning Conference
+            </h4>
+        </div>
+
+        <!-- <main class="content">
+            <my-session-list></my-session-list>
+        </main> -->
+        <template if:true={isStateList}>
+            <p class="slds-p-horizontal_small">
+                <my-session-list onnavigate={handleNavigate}></my-session-list>
+            </p>
+        </template>
+
+        <template if:true={isStateDetails}>
+            <p class="slds-p-horizontal_small">
+                <my-session-details
+                    onnavigate={handleNavigate}
+                    session-id={sessionId}
+                ></my-session-details>
+            </p>
+        </template>
+    </lightning-card>
 </template>

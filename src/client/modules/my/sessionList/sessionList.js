@@ -2,6 +2,7 @@ import { LightningElement } from 'lwc';
 import { getSessions } from 'data/sessionService';
 export default class SessionList extends LightningElement {
     sessions = [];
+    isSelected = false;
     connectedCallback() {
         getSessions().then((result) => {
             this.sessions = this.allSessions = result;
@@ -13,5 +14,20 @@ export default class SessionList extends LightningElement {
         this.sessions = this.allSessions.filter((session) =>
             session.name.toLowerCase().includes(searchKey)
         );
+    }
+
+    handleSessionClick(event) {
+        const index = event.currentTarget.dataset.index;
+        const navigateEvent = new CustomEvent('navigate', {
+            detail: {
+                state: 'details',
+                sessionId: this.sessions[index].id
+            }
+        });
+        this.dispatchEvent(navigateEvent);
+    }
+
+    handleClick() {
+        this.isSelected = !this.isSelected;
     }
 }

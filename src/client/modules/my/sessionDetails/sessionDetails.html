@@ -1,0 +1,112 @@
+<template>
+    <template if:true={session}>
+        <lightning-breadcrumbs>
+            <lightning-breadcrumb
+                label="Sessions"
+                href="#"
+                onclick={handleSessionsClick}
+            >
+            </lightning-breadcrumb>
+            <lightning-breadcrumb label={session.name}> </lightning-breadcrumb>
+        </lightning-breadcrumbs>
+
+        <div class="slds-p-around_medium lgc-bg">
+            <lightning-card title="Event Details">
+                <p class="icon time">
+                    <lightning-icon
+                        icon-name="standard:date_time"
+                        alternative-text="Date Time"
+                        title="Date Time"
+                        size="x-small"
+                    >
+                    </lightning-icon>
+                    {session.dateTime}
+                </p>
+
+                <p class="icon room">
+                    <lightning-icon
+                        icon-name="standard:address"
+                        alternative-text="Address"
+                        title="Address"
+                        size="x-small"
+                    >
+                    </lightning-icon>
+                    {session.room}
+                </p>
+            </lightning-card>
+
+            <lightning-card title="Abstract">
+                <div class="abstract">{session.description}</div>
+            </lightning-card>
+
+            <lightning-card title="Speakers">
+                <div class="speaker-list">
+                    <template if:true={session.speakers}>
+                        <template
+                            for:each={session.speakers}
+                            for:item="speaker"
+                        >
+                            <lightning-card key={speaker.id}>
+                                <my-speaker-card
+                                    key={speaker.id}
+                                    speaker={speaker}
+                                >
+                                </my-speaker-card>
+                            </lightning-card>
+                        </template>
+                    </template>
+                </div>
+            </lightning-card>
+
+            <lightning-card title="Join Us">
+                <lightning-input
+                    type="text"
+                    label="Name"
+                    placeholder="Enter your full name..."
+                    required
+                ></lightning-input>
+                <lightning-input
+                    type="email"
+                    label="Email address"
+                    placeholder="Enter your primary email address..."
+                    required
+                ></lightning-input>
+                <lightning-input
+                    type="tel"
+                    label="Phone Number"
+                    placeholder="Enter your primary phone number..."
+                    required
+                ></lightning-input>
+                <lightning-input
+                    type="url"
+                    label="LinkedIn"
+                    placeholder="Provide a link to your LinkedIn profile..."
+                    pattern="^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$"
+                ></lightning-input>
+                <lightning-combobox
+                    name="role"
+                    label="Role"
+                    value=""
+                    placeholder="Select Role"
+                    options={options}
+                    required
+                >
+                </lightning-combobox>
+                <lightning-textarea
+                    placeholder="Type here..."
+                    label="Why are you interested in this event? (a maximum of 200 characters)"
+                    maxlength="200"
+                    message-when-too-long="A maximum of 200 characters are allowed in a tweet."
+                ></lightning-textarea>
+
+                <lightning-button
+                    variant="brand"
+                    label="Count Me In!"
+                    onclick={handleClick}
+                    class="slds-m-left_x-small"
+                ></lightning-button>
+                <p>{clickedButtonLabel}</p>
+            </lightning-card>
+        </div>
+    </template>
+</template>

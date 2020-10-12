@@ -1,0 +1,23 @@
+<template>
+    <div class="card">
+        <div class="header">
+            <lightning-avatar
+                src={speaker.pictureUrl}
+                variant="circle"
+                key={speaker.id}
+                size="large"
+                alternative-text={speaker.name}
+            >
+            </lightning-avatar>
+            <div>
+                <p class="title">{speaker.name}</p>
+                <p>
+                    <lightning-formatted-email
+                        value={speaker.email}
+                    ></lightning-formatted-email>
+                </p>
+            </div>
+        </div>
+        {speaker.bio}
+    </div>
+</template>

@@ -17,3 +17,9 @@ header h2 {
 .content {
     padding: 0 3rem;
 }
+
+.dark-background {
+    background-color: #16325c;
+    padding: 12px;
+    color: #fff;
+}

@@ -1,6 +1,6 @@
 <template>
     <div class="list">
-        <div class="search-field">
+        <div class="slds-form-element">
             <lightning-input
                 type="search"
                 label="Search"
@@ -19,66 +19,57 @@
                     data-index={index}
                     onclick={handleSessionClick}
                 >
-                    <lightning-card>
-                        <lightning-tile
-                            label={session.name}
-                            href=""
-                            key={session.id}
-                            class="session"
-                        >
-                            <p class="icon time">
-                                <lightning-icon
-                                    icon-name="standard:date_time"
-                                    alternative-text="Date Time"
-                                    title="Date Time"
-                                    size="x-small"
+                    <div class="slds-card">
+                        <div class="slds-card__header slds-grid">
+                            <lightning-card title={session.name}>
+                                <div
+                                    class="slds-card__body slds-card__body_inner"
                                 >
-                                </lightning-icon>
-                                {session.dateTime}
-                            </p>
+                                    <p>
+                                        <lightning-icon
+                                            class="slds-icon slds-icon-text-default slds-icon_small"
+                                            icon-name="standard:date_time"
+                                            alternative-text="Date Time"
+                                            title="Date Time"
+                                            size="small"
+                                        >
+                                        </lightning-icon>
+                                        {session.dateTime}
+                                    </p>
 
-                            <p class="icon address">
-                                <lightning-icon
-                                    icon-name="standard:address"
-                                    alternative-text="Address"
-                                    title="Address"
-                                    size="x-small"
-                                >
-                                </lightning-icon>
-                                {session.room}
-                            </p>
-                            <lightning-badge
-                                label="Online Event"
-                            ></lightning-badge>
+                                    <p>
+                                        <lightning-icon
+                                            class="slds-icon slds-icon-text-default slds-icon_small"
+                                            icon-name="standard:address"
+                                            alternative-text="Address"
+                                            title="Address"
+                                            size="small"
+                                        >
+                                        </lightning-icon>
+                                        {session.room}
+                                    </p>
 
-                            <div class="speaker-pictures">
-                                <template
-                                    for:each={session.speakers}
-                                    for:item="speaker"
-                                >
-                                    <lightning-avatar
-                                        src={speaker.pictureUrl}
-                                        variant="circle"
-                                        key={speaker.id}
-                                        size="large"
-                                        alternative-text={speaker.name}
-                                    >
-                                    </lightning-avatar>
-                                </template>
-                            </div>
-                        </lightning-tile>
-                    </lightning-card>
+                                    <div>
+                                        <template
+                                            for:each={session.speakers}
+                                            for:item="speaker"
+                                        >
+                                            <lightning-avatar
+                                                class="slds-avatar"
+                                                src={speaker.pictureUrl}
+                                                variant="circle"
+                                                key={speaker.id}
+                                                size="large"
+                                                alternative-text={speaker.name}
+                                            >
+                                            </lightning-avatar>
+                                        </template>
+                                    </div>
+                                </div>
+                            </lightning-card>
+                        </div>
+                    </div>
                 </a>
-                <!-- <lightning-button-stateful
-                            label-when-off="Follow"
-                            label-when-on="Following"
-                            label-when-hover="Unfollow"
-                            icon-name-when-off="utility:add"
-                            icon-name-when-on="utility:check"
-                            icon-name-when-hover="utility:close"
-                            selected={isSelected}
-                            onclick={handleClick}>
-                        </lightning-button-stateful> -->
             </div>
         </template>
     </div>
